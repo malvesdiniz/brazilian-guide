@@ -1,0 +1,49 @@
+@use 'breakpoints' as bp;
+@use 'page-layout';
+@use 'filters-panel';
+
+@include page-layout.styles;
+@include filters-panel.styles;
+
+.coast-comparison {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include bp.up(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.coast-comparison__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-ocean-100);
+  border: 1px solid var(--color-border);
+
+  app-icon {
+    color: var(--color-ocean-700);
+  }
+
+  p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+}
+
+.coast-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.coast-selector__label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}

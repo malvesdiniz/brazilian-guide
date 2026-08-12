@@ -1,0 +1,15 @@
+@if (destinations().length) {
+  <div class="destination-grid">
+    @for (destination of destinations(); track destination.id) {
+      <app-destination-card
+        [destination]="destination"
+        [selected]="destination.id === selectedId()"
+        (select)="select.emit($event)"
+      />
+    }
+  </div>
+} @else {
+  <app-empty-state icon="filter" [title]="emptyTitle()" [description]="emptyDescription()">
+    <ng-content select="[emptyAction]" />
+  </app-empty-state>
+}

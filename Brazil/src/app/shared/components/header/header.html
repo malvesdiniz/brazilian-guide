@@ -1,0 +1,49 @@
+<header class="header">
+  <div class="header__inner container">
+    <a routerLink="/" class="header__brand">
+      <app-icon name="compass" [size]="22" />
+      <span>Brazilian Tourist Guide</span>
+    </a>
+
+    <nav class="header__nav" aria-label="Primary">
+      <ul class="header__nav-list">
+        @for (link of navLinks; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="header__link--active"
+              [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              class="header__link"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <button
+      type="button"
+      class="header__menu-button"
+      (click)="toggleMobileNav()"
+      [attr.aria-expanded]="mobileNavOpen()"
+      aria-controls="mobile-navigation"
+    >
+      <app-icon [name]="mobileNavOpen() ? 'close' : 'menu'" [size]="22" />
+      <span class="visually-hidden">{{ mobileNavOpen() ? 'Close menu' : 'Open menu' }}</span>
+    </button>
+  </div>
+</header>
+
+<!--
+  Rendered as a sibling of <header>, not nested inside it: the header uses
+  backdrop-filter, which (like `filter`) creates a containing block for
+  `position: fixed` descendants — nesting this panel inside it would break
+  its full-viewport fixed positioning.
+-->
+<app-mobile-navigation
+  id="mobile-navigation"
+  [open]="mobileNavOpen()"
+  [links]="navLinks"
+  (closeRequested)="closeMobileNav()"
+/>

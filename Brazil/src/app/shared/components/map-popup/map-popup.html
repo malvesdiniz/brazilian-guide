@@ -1,0 +1,38 @@
+<div class="map-popup" role="dialog" aria-modal="false" [attr.aria-label]="destination().name">
+  <button type="button" class="map-popup__close" (click)="closed.emit()">
+    <app-icon name="close" [size]="16" />
+    <span class="visually-hidden">Close</span>
+  </button>
+
+  <div class="map-popup__media">
+    <app-image
+      [src]="destination().image"
+      [alt]="destination().imageAlt ?? destination().name"
+      [label]="destination().name"
+    />
+  </div>
+
+  <div class="map-popup__body">
+    <div class="map-popup__badges">
+      @if (destination().category) {
+        <span class="map-popup__badge">
+          <app-icon [name]="categoryIconName()" [size]="12" />
+          {{ destination().category }}
+        </span>
+      }
+      @if (destination().region) {
+        <span class="map-popup__badge map-popup__badge--muted">{{ destination().region }}</span>
+      }
+    </div>
+
+    <h3 class="map-popup__title">{{ destination().name }}</h3>
+    <p class="map-popup__description">{{ destination().shortDescription }}</p>
+
+    <div class="map-popup__actions">
+      <a class="map-popup__link" [routerLink]="['/destination', destination().slug]">
+        View more details
+        <app-icon name="arrow-right" [size]="15" />
+      </a>
+    </div>
+  </div>
+</div>

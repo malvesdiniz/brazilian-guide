@@ -1,0 +1,53 @@
+<app-hero-section [content]="hero" />
+
+<section class="container page-section">
+  <app-section-heading
+    eyebrow="Before you go"
+    title="Brazil travel tips"
+    description="A few country-level notes. See the homepage for general tips that apply everywhere."
+  />
+  <app-tips-grid [tips]="tips" />
+</section>
+
+<section class="container page-section">
+  <app-section-heading
+    eyebrow="Explore the map"
+    title="Destinations around Brazil"
+    description="A broad, illustrative selection — not a complete list. Use the filters to narrow things down by region or category."
+  />
+
+  <app-interactive-map
+    [destinations]="filteredDestinations()"
+    [selectedDestinationId]="selectedId()"
+    [initialCenter]="mapView.center"
+    [initialZoom]="mapView.zoom"
+    region="Brazil"
+    (destinationSelected)="selectDestination($event)"
+  />
+
+  <div class="page-layout">
+    <aside class="page-layout__sidebar">
+      <app-destination-filters
+        [regions]="regions"
+        [categories]="categories"
+        [selectedRegion]="selectedRegion()"
+        [selectedCategory]="selectedCategory()"
+        (regionChange)="selectedRegion.set($event)"
+        (categoryChange)="selectedCategory.set($event)"
+        (clear)="clearFilters()"
+      />
+    </aside>
+
+    <div class="page-layout__content">
+      <app-destination-grid
+        [destinations]="filteredDestinations()"
+        [selectedId]="selectedId()"
+        (select)="selectDestination($event)"
+      >
+        <button emptyAction type="button" class="page-empty-clear" (click)="clearFilters()">
+          Clear filters
+        </button>
+      </app-destination-grid>
+    </div>
+  </div>
+</section>

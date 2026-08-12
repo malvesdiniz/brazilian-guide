@@ -1,0 +1,77 @@
+<app-hero-section [content]="hero" />
+
+<section class="container page-section">
+  <app-section-heading
+    eyebrow="Good to know"
+    title="Practical Fortaleza tips"
+    description="A few city-level notes. See the homepage for general tips that apply everywhere."
+  />
+  <app-tips-grid [tips]="tips" />
+</section>
+
+@if (featuredDestinations.length) {
+  <section class="container page-section">
+    <app-section-heading
+      eyebrow="Worth prioritizing"
+      title="Featured experiences"
+      description="A handful of sample highlights to anchor your plans — select one to see it on the map."
+    />
+
+    <div class="featured-strip">
+      @for (destination of featuredDestinations; track destination.id) {
+        <app-destination-card
+          [destination]="destination"
+          [selected]="destination.id === selectedId()"
+          [isScrollAnchor]="false"
+          (select)="selectDestination($event)"
+        />
+      }
+    </div>
+  </section>
+}
+
+<section class="container page-section">
+  <app-section-heading
+    eyebrow="Explore the city"
+    title="Neighborhoods & activities"
+    description="Sample attractions organized by category — filter by activity type or neighborhood to plan your days."
+  />
+
+  <app-interactive-map
+    [destinations]="filteredDestinations()"
+    [selectedDestinationId]="selectedId()"
+    [initialCenter]="mapView.center"
+    [initialZoom]="mapView.zoom"
+    region="Fortaleza"
+    (destinationSelected)="selectDestination($event)"
+  />
+
+  <div class="page-layout">
+    <aside class="page-layout__sidebar">
+      <app-destination-filters
+        [regions]="regions"
+        [categories]="categories"
+        [selectedRegion]="selectedRegion()"
+        [selectedCategory]="selectedCategory()"
+        regionLabel="Neighborhood"
+        regionAllLabel="All neighborhoods"
+        (regionChange)="selectedRegion.set($event)"
+        (categoryChange)="selectedCategory.set($event)"
+        (clear)="clearFilters()"
+      />
+    </aside>
+
+    <div class="page-layout__content">
+      <app-destination-grid
+        [destinations]="filteredDestinations()"
+        [selectedId]="selectedId()"
+        emptyTitle="No attractions match this neighborhood or category"
+        (select)="selectDestination($event)"
+      >
+        <button emptyAction type="button" class="page-empty-clear" (click)="clearFilters()">
+          Clear filters
+        </button>
+      </app-destination-grid>
+    </div>
+  </div>
+</section>

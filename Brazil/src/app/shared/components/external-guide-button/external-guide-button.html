@@ -1,0 +1,11 @@
+<a
+  [href]="href()"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="guide-button"
+  [class.guide-button--secondary]="variant() === 'secondary'"
+>
+  {{ label() }}
+  <app-icon name="external-link" [size]="16" />
+  <span class="visually-hidden">(opens in a new tab)</span>
+</a>

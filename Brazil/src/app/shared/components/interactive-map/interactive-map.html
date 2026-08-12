@@ -1,0 +1,29 @@
+@if (loadFailed()) {
+  <app-empty-state
+    icon="alert-triangle"
+    title="The map couldn't be loaded"
+    description="You can still browse every destination using the list below."
+  />
+} @else {
+  <div class="interactive-map" role="region" [attr.aria-label]="mapLabel()">
+    <div #mapContainer class="interactive-map__canvas"></div>
+
+    @if (!ready()) {
+      <app-loading-state label="Loading map…" [fullHeight]="true" class="interactive-map__loading" />
+    }
+
+    @if (selectedDestination(); as destination) {
+      <div class="interactive-map__popup">
+        <app-map-popup [destination]="destination" (closed)="closePopup()" />
+      </div>
+    }
+  </div>
+
+  @if (ready() && locatableDestinations().length === 0) {
+    <app-empty-state
+      icon="map-pin-off"
+      title="No mappable locations yet"
+      description="None of the currently visible destinations have map coordinates. They still appear in the list below."
+    />
+  }
+}

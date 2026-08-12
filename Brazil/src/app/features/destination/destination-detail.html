@@ -1,0 +1,254 @@
+<div class="detail">
+  @if (destination(); as destination) {
+    <div class="detail__media">
+      <app-image
+        [src]="destination.image"
+        [alt]="destination.imageAlt ?? destination.name"
+        [label]="destination.name"
+      />
+    </div>
+
+    <header class="detail__header">
+      <div class="detail__badges">
+        @if (destination.category) {
+          <span class="detail__badge">
+            <app-icon [name]="categoryIconName()" [size]="13" />
+            {{ destination.category }}
+          </span>
+        }
+
+        @if (destination.region) {
+          <span class="detail__badge detail__badge--muted">
+            {{ destination.region }}
+          </span>
+        }
+
+        @if (destination.featured) {
+          <span class="detail__badge detail__badge--featured">
+            <app-icon name="sparkles" [size]="13" />
+            Featured
+          </span>
+        }
+      </div>
+
+      <h1 class="detail__title">
+        {{ destination.name }}
+      </h1>
+
+      <p class="detail__summary">
+        {{ destination.shortDescription }}
+      </p>
+    </header>
+
+    @if (destination.quickFacts) {
+      <section class="detail__quick-facts">
+        @if (destination.quickFacts.fromFortaleza) {
+          <article class="detail__fact">
+            <span class="detail__fact-label"> From Fortaleza </span>
+
+            <strong class="detail__fact-value">
+              {{ destination.quickFacts.fromFortaleza }}
+            </strong>
+          </article>
+        }
+
+        @if (destination.quickFacts.airport) {
+          <article class="detail__fact">
+            <span class="detail__fact-label"> Airport </span>
+
+            <strong class="detail__fact-value">
+              {{ destination.quickFacts.airport }}
+            </strong>
+          </article>
+        }
+
+        @if (destination.quickFacts.weather) {
+          <article class="detail__fact">
+            <span class="detail__fact-label"> July & August </span>
+
+            <strong class="detail__fact-value">
+              {{ destination.quickFacts.weather }}
+            </strong>
+          </article>
+        }
+
+        @if (destination.quickFacts.suggestedStay) {
+          <article class="detail__fact">
+            <span class="detail__fact-label"> Suggested stay </span>
+
+            <strong class="detail__fact-value">
+              {{ destination.quickFacts.suggestedStay }}
+            </strong>
+          </article>
+        }
+      </section>
+    }
+
+    <div class="detail__grid">
+      <main class="detail__main">
+        @if (destination.fullDescription) {
+          <section class="detail__section">
+            <p class="detail__eyebrow">THE GENERAL IDEA</p>
+
+            <h2>What is {{ destination.name }} like?</h2>
+
+            <p class="detail__full-description">
+              {{ destination.fullDescription }}
+            </p>
+          </section>
+        }
+
+        @if (destination.quickFacts?.bestFor?.length) {
+          <section class="detail__section">
+            <p class="detail__eyebrow">GOOD FOR</p>
+
+            <div class="detail__tags">
+              @for (item of destination.quickFacts?.bestFor ?? []; track item) {
+                <span class="detail__tag">
+                  {{ item }}
+                </span>
+              }
+            </div>
+          </section>
+        }
+        @if (destination.placesToVisit?.length) {
+          <section class="detail__section">
+            <p class="detail__eyebrow">PLACES TO CHECK OUT</p>
+
+            <h2>Some places worth looking into</h2>
+
+            <ul class="detail__places-list">
+              @for (place of destination.placesToVisit; track place) {
+                <li>{{ place }}</li>
+              }
+            </ul>
+          </section>
+        }
+        @if (destination.pros?.length || destination.cons?.length) {
+          <section class="detail__section">
+            <p class="detail__eyebrow">THE SHORT VERSION</p>
+
+            <h2>Why go — and what to keep in mind</h2>
+
+            <div class="detail__pros-cons">
+              @if (destination.pros?.length) {
+                <article class="detail__pros">
+                  <h3>Why you might love it</h3>
+
+                  <ul class="detail__list">
+                    @for (item of destination.pros; track item) {
+                      <li>
+                        {{ item }}
+                      </li>
+                    }
+                  </ul>
+                </article>
+              }
+
+              @if (destination.cons?.length) {
+                <article class="detail__cons">
+                  <h3>Things to keep in mind</h3>
+
+                  <ul class="detail__list">
+                    @for (item of destination.cons; track item) {
+                      <li>
+                        {{ item }}
+                      </li>
+                    }
+                  </ul>
+                </article>
+              }
+            </div>
+          </section>
+        }
+
+        @if (destination.personalTake?.length) {
+          <section class="detail__section detail__personal-take">
+            <p class="detail__eyebrow">MY TWO CENTS</p>
+
+            <h2>My take</h2>
+
+            <div class="detail__personal-content">
+              @for (paragraph of destination.personalTake; track paragraph) {
+                <p>
+                  {{ paragraph }}
+                </p>
+              }
+            </div>
+          </section>
+        }
+
+        @if (destination.nearbyIdeas?.length) {
+          <section class="detail__section">
+            <p class="detail__eyebrow">HAVE MORE TIME?</p>
+
+            <h2>Extend the trip</h2>
+
+            <p class="detail__section-intro">
+              If you want to stay in the area a little longer, there are a few nearby places worth
+              looking into.
+            </p>
+
+            <div class="detail__nearby-grid">
+              @for (idea of destination.nearbyIdeas; track idea.name) {
+                <article class="detail__nearby-card">
+                  <h3>
+                    {{ idea.name }}
+                  </h3>
+
+                  @if (idea.description) {
+                    <p>
+                      {{ idea.description }}
+                    </p>
+                  }
+                </article>
+              }
+            </div>
+          </section>
+        }
+
+        @if (destination.guideLinks; as guideLinks) {
+          <section class="detail__section detail__learn-more">
+            <p class="detail__eyebrow">WANT THE DETAILS?</p>
+
+            <h2>Keep researching</h2>
+
+            <p>
+              If you want to go deeper, here are a few useful guides with more detailed information
+              about this destination.
+            </p>
+
+            <div class="detail__guide-links">
+              @for (link of destination.guideLinks; track link.url) {
+                <a
+                  class="detail__guide-link"
+                  [href]="link.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ link.label }}
+                  <app-icon name="external-link" [size]="15" />
+                </a>
+              }
+            </div>
+          </section>
+        }
+
+        @if (destination.lastUpdated) {
+          <p class="detail__updated">Last updated {{ destination.lastUpdated }}</p>
+        }
+      </main>
+    </div>
+  } @else {
+    <app-empty-state
+      icon="map-pin-off"
+      title="Destination not found"
+      description="We couldn't find this destination. It may have been moved or removed."
+    />
+
+    <a class="detail__back-home" routerLink="/">
+      <app-icon name="arrow-left" [size]="16" />
+      Back to the homepage
+    </a>
+  }
+</div>

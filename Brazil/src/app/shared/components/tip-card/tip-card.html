@@ -1,0 +1,42 @@
+<div class="tip-card">
+  <h3 class="tip-card__heading">
+    <button
+      type="button"
+      class="tip-card__trigger"
+      [id]="triggerId()"
+      [attr.aria-expanded]="expanded()"
+      [attr.aria-controls]="panelId()"
+      (click)="toggle()"
+    >
+      <app-icon [name]="iconName()" [size]="20" class="tip-card__icon" />
+
+      <span class="tip-card__heading-text">
+        <span class="tip-card__title">
+          {{ tip().title }}
+        </span>
+      </span>
+
+      <app-icon name="chevron-down" [size]="18" class="tip-card__chevron" />
+    </button>
+  </h3>
+
+  <div
+    class="tip-card__panel"
+    [id]="panelId()"
+    role="region"
+    [attr.aria-labelledby]="triggerId()"
+    [hidden]="!expanded()"
+  >
+    @if (tip().details?.length) {
+      <ul class="tip-card__details">
+        @for (detail of tip().details; track detail) {
+          <li [innerHTML]="detail"></li>
+        }
+      </ul>
+    }
+
+    @if (tip().lastUpdated) {
+      <p class="tip-card__updated">Last updated {{ tip().lastUpdated }}</p>
+    }
+  </div>
+</div>

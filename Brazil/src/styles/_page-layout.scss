@@ -1,0 +1,54 @@
+// Shared layout used by the Brazil, Ceará, and Fortaleza guide pages:
+// a page section wrapper and a sidebar-filters + content two-column layout.
+// Usage: @use 'page-layout'; then `@include page-layout.styles;`
+@use 'breakpoints' as bp;
+
+@mixin styles {
+  .page-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding-block: var(--space-12);
+  }
+
+  .page-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    align-items: flex-start;
+
+    @include bp.up(lg) {
+      flex-direction: row;
+    }
+  }
+
+  .page-layout__sidebar {
+    width: 100%;
+
+    @include bp.up(lg) {
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-4));
+      width: 17rem;
+      flex-shrink: 0;
+    }
+  }
+
+  .page-layout__content {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .page-empty-clear {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+
+    &:hover {
+      background: var(--color-primary-strong);
+    }
+  }
+}

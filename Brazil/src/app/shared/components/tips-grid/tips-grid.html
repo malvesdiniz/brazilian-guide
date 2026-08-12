@@ -1,0 +1,5 @@
+<div class="tips-grid">
+  @for (tip of tips(); track tip.id) {
+    <app-tip-card [tip]="tip" />
+  }
+</div>

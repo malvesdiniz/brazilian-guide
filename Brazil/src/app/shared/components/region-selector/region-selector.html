@@ -1,0 +1,22 @@
+<div class="chip-group" role="group" [attr.aria-label]="label()">
+  <button
+    type="button"
+    class="chip-group__chip"
+    [class.chip-group__chip--active]="selected() === null"
+    [attr.aria-pressed]="selected() === null"
+    (click)="regionChange.emit(null)"
+  >
+    {{ allLabel() }}
+  </button>
+  @for (region of regions(); track region) {
+    <button
+      type="button"
+      class="chip-group__chip"
+      [class.chip-group__chip--active]="selected() === region"
+      [attr.aria-pressed]="selected() === region"
+      (click)="regionChange.emit(region)"
+    >
+      {{ region }}
+    </button>
+  }
+</div>

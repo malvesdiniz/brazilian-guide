@@ -1,0 +1,99 @@
+@use 'breakpoints' as bp;
+
+.home-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast);
+
+  &--primary {
+    background: var(--color-accent);
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+
+    &:hover {
+      background: var(--color-coral-700);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--secondary {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--color-white);
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.24);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block: var(--space-16);
+}
+
+.home-guides {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+
+  @include bp.up(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home-how-to {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+
+  @include bp.up(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home-how-to__step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-sand-100);
+  border: 1px solid var(--color-border);
+}
+
+.home-how-to__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+  background: var(--color-ocean-100);
+  color: var(--color-ocean-700);
+}
+
+.home-how-to__title {
+  font-size: 1.125rem;
+}
+
+.home-how-to__description {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+.home-intro {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 25px;
+  font-weight: 400 !important;
+}

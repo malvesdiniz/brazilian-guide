@@ -1,0 +1,19 @@
+<section class="hero">
+  <div class="hero__media" aria-hidden="true">
+    <app-image [src]="content().image" [alt]="content().imageAlt ?? ''" />
+  </div>
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__content container">
+    @if (content().eyebrow) {
+      <p class="hero__eyebrow">{{ content().eyebrow }}</p>
+    }
+    <h1 class="hero__title">{{ content().title }}</h1>
+    <p class="hero__description">{{ content().description }}</p>
+
+    <div class="hero__actions">
+      <ng-content />
+    </div>
+  </div>
+</section>

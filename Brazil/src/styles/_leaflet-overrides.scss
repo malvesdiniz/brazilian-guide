@@ -1,0 +1,79 @@
+// Leaflet renders its own DOM outside Angular's template system, so these
+// rules must live in the global stylesheet rather than a component's
+// encapsulated styles — Angular's scoped selectors would never match them.
+
+.leaflet-container {
+  font-family: var(--font-body);
+  border-radius: var(--radius-lg);
+  background: var(--color-sand-100);
+}
+
+.leaflet-control-attribution {
+  background: rgba(251, 248, 243, 0.85) !important;
+  font-size: 0.6875rem !important;
+}
+
+.leaflet-control-zoom a {
+  border-radius: var(--radius-sm) !important;
+  color: var(--color-primary-strong) !important;
+}
+
+// Default marker pin — a simple teardrop built from CSS, no image assets.
+.map-marker {
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-ocean-700);
+    border: 2px solid var(--color-white);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: var(--shadow-sm);
+    transition:
+      background var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-white);
+  }
+
+  &--selected::before {
+    background: var(--color-coral-600);
+    transform: rotate(-45deg) scale(1.15);
+  }
+}
+
+// Cluster badge.
+.map-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-ocean-700);
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-marker::before {
+    transition: none;
+  }
+}

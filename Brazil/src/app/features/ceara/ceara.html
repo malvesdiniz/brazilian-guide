@@ -1,0 +1,90 @@
+<app-hero-section [content]="hero" />
+
+<section class="container page-section">
+  <app-section-heading
+    eyebrow="Before you go"
+    title="Ceará travel tips"
+    description="A few state-level notes. See the homepage for general tips that apply everywhere."
+  />
+  <app-tips-grid [tips]="tips" />
+</section>
+
+<section class="container page-section">
+  <app-section-heading
+    eyebrow="West Coast vs East Coast"
+    title="Two very different coastlines"
+    description="A quick, general comparison to help you decide where to focus — both are covered below."
+  />
+
+  <div class="coast-comparison">
+    @for (coast of coastComparison; track coast.title) {
+      <div class="coast-comparison__card">
+        <app-icon [name]="coast.icon" [size]="22" />
+        <h3>{{ coast.title }}</h3>
+        <p>{{ coast.description }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="container page-section">
+  <app-section-heading
+    eyebrow="Explore the map"
+    title="Beaches, towns, and day trips"
+    description="Sample destinations only — this page is meant for discovery, not a complete itinerary."
+  />
+
+  <div class="coast-selector">
+    <span class="coast-selector__label" id="coast-selector-label">Coast</span>
+    <app-region-selector
+      [regions]="regions"
+      [selected]="selectedRegion()"
+      label="Coast"
+      allLabel="All of Ceará"
+      (regionChange)="selectCoast($event)"
+    />
+  </div>
+
+  <app-interactive-map
+    [destinations]="filteredDestinations()"
+    [selectedDestinationId]="selectedId()"
+    [initialCenter]="mapView.center"
+    [initialZoom]="mapView.zoom"
+    region="Ceará"
+    (destinationSelected)="selectDestination($event)"
+  />
+
+  <div class="page-layout">
+    <aside class="page-layout__sidebar">
+      <div class="destination-filters">
+        <div class="destination-filters__group">
+          <span class="destination-filters__label">Category</span>
+          <app-category-filter
+            [categories]="categories"
+            [selected]="selectedCategory()"
+            (categoryChange)="selectedCategory.set($event)"
+          />
+        </div>
+
+        @if (selectedRegion() || selectedCategory()) {
+          <button type="button" class="destination-filters__clear" (click)="clearFilters()">
+            Clear filters
+          </button>
+        }
+      </div>
+    </aside>
+
+    <div class="page-layout__content">
+      <app-destination-grid
+        [destinations]="filteredDestinations()"
+        [selectedId]="selectedId()"
+        emptyTitle="No destinations match this coast or category"
+        (select)="selectDestination($event)"
+      >
+        <button emptyAction type="button" class="page-empty-clear" (click)="clearFilters()">
+          Clear filters
+        </button>
+      </app-destination-grid>
+    </div>
+  </div>
+</section>

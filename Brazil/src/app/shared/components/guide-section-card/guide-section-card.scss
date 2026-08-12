@@ -1,0 +1,144 @@
+.guide-card {
+  display: block;
+  height: 100%;
+
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  text-decoration: none;
+  color: var(--color-white);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+.guide-card__media {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  min-height: 18rem;
+
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  app-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    transition:
+      transform var(--transition-base),
+      filter var(--transition-base);
+
+    filter: sepia(0.14) saturate(1.08) brightness(0.98);
+  }
+}
+
+.guide-card__overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(10, 25, 30, 0.05) 20%,
+    rgba(10, 25, 30, 0.25) 55%,
+    rgba(10, 25, 30, 0.82) 100%
+  );
+
+  pointer-events: none;
+}
+
+.guide-card__body {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: var(--space-2);
+
+  padding: var(--space-6);
+}
+
+.guide-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.guide-card__title {
+  margin: 0;
+
+  font-size: clamp(1.75rem, 1.4rem + 1vw, 2.5rem);
+  line-height: 1.05;
+
+  color: var(--color-white);
+}
+
+.guide-card__cta {
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--space-2);
+
+  margin-top: var(--space-2);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: var(--color-white);
+
+  opacity: 0.9;
+
+  app-icon {
+    transition: transform var(--transition-fast);
+  }
+}
+
+.guide-card:hover .guide-card__media app-image,
+.guide-card:focus-visible .guide-card__media app-image {
+  transform: scale(1.04);
+
+  filter: sepia(0.18) saturate(1.1) brightness(0.9);
+}
+
+.guide-card:hover .guide-card__cta app-icon,
+.guide-card:focus-visible .guide-card__cta app-icon {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .guide-card__media {
+    min-height: 20rem;
+  }
+
+  .guide-card__body {
+    padding: var(--space-5);
+  }
+}

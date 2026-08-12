@@ -1,0 +1,56 @@
+<article
+  class="destination-card"
+  [id]="isScrollAnchor() ? 'destination-card-' + destination().id : null"
+  [class.destination-card--selected]="selected()"
+>
+  <button
+    type="button"
+    class="destination-card__surface"
+    (click)="onSelect()"
+    [attr.aria-pressed]="selected()"
+  >
+    <div class="destination-card__media">
+      <app-image
+        [src]="destination().image"
+        [alt]="destination().imageAlt ?? destination().name"
+        [label]="destination().name"
+      />
+      @if (destination().featured) {
+        <span class="destination-card__featured">
+          <app-icon name="sparkles" [size]="13" />
+          Featured
+        </span>
+      }
+      @if (!destination().coordinates) {
+        <span class="destination-card__no-map">
+          <app-icon name="map-pin-off" [size]="13" />
+          No map data
+        </span>
+      }
+    </div>
+
+    <div class="destination-card__body">
+      <div class="destination-card__badges">
+        @if (destination().category) {
+          <span class="destination-card__badge">
+            <app-icon [name]="categoryIconName()" [size]="13" />
+            {{ destination().category }}
+          </span>
+        }
+        @if (destination().region) {
+          <span class="destination-card__badge destination-card__badge--muted">
+            {{ destination().region }}
+          </span>
+        }
+      </div>
+
+      <h3 class="destination-card__title">{{ destination().name }}</h3>
+      <p class="destination-card__description">{{ destination().shortDescription }}</p>
+    </div>
+  </button>
+
+  <a class="destination-card__link" [routerLink]="['/destination', destination().slug]">
+    View details
+    <app-icon name="arrow-right" [size]="15" />
+  </a>
+</article>

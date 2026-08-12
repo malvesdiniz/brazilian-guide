@@ -1,0 +1,22 @@
+<a class="guide-card" [routerLink]="card().routerLink">
+  <div class="guide-card__media">
+    <app-image [src]="card().image" [alt]="card().imageAlt" [label]="card().title" />
+
+    <div class="guide-card__overlay"></div>
+
+    <div class="guide-card__body">
+      <span class="guide-card__label">
+        {{ card().contentLabel }}
+      </span>
+
+      <h3 class="guide-card__title">
+        {{ card().title }}
+      </h3>
+
+      <span class="guide-card__cta">
+        Explore {{ card().title }}
+        <app-icon name="arrow-right" [size]="16" />
+      </span>
+    </div>
+  </div>
+</a>

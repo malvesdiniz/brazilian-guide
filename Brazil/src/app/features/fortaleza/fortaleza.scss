@@ -1,0 +1,18 @@
+@use 'breakpoints' as bp;
+@use 'page-layout';
+
+@include page-layout.styles;
+
+.featured-strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @include bp.up(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include bp.up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

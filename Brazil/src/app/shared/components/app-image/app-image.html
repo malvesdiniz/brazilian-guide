@@ -1,0 +1,10 @@
+@if (src() && !failed()) {
+  <img [src]="src()" [alt]="alt()" (error)="onError()" class="app-image__img" loading="lazy" />
+} @else {
+  <div class="app-image__fallback" role="img" [attr.aria-label]="alt() || label() || 'Image not available'">
+    <app-icon name="image-off" [size]="28" />
+    @if (label()) {
+      <span class="app-image__fallback-label">{{ label() }}</span>
+    }
+  </div>
+}

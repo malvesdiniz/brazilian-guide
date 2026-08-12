@@ -1,0 +1,45 @@
+@use 'breakpoints' as bp;
+
+.interactive-map {
+  position: relative;
+  width: 100%;
+  height: 22rem;
+
+  @include bp.up(md) {
+    height: 28rem;
+  }
+}
+
+.interactive-map__canvas {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.interactive-map__loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--color-sand-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.interactive-map__popup {
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: var(--space-3);
+  z-index: 400;
+  display: flex;
+  justify-content: center;
+
+  @include bp.up(sm) {
+    left: var(--space-4);
+    right: auto;
+    bottom: var(--space-4);
+  }
+}

@@ -1,0 +1,131 @@
+.tip-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast);
+  height: 100%;
+  &:has(.tip-card__trigger[aria-expanded='true']) {
+    box-shadow: var(--shadow-sm);
+  }
+}
+.tip-card__details {
+  a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+
+    transition:
+      color var(--transition-fast),
+      text-decoration-color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-secondary);
+      text-decoration-thickness: 2px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    &::after {
+      content: ' ↗';
+      font-size: 0.85em;
+    }
+  }
+}
+
+.tip-card__heading {
+  margin: 0;
+}
+
+.tip-card__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: none;
+  border: 0;
+  text-align: left;
+}
+
+.tip-card__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: var(--color-green-100);
+  color: var(--color-green-700);
+}
+
+.tip-card__heading-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tip-card__title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.tip-card__summary {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.tip-card__chevron {
+  flex-shrink: 0;
+  color: var(--color-slate-400);
+  transition: transform var(--transition-base);
+}
+
+.tip-card__trigger[aria-expanded='true'] .tip-card__chevron {
+  transform: rotate(180deg);
+}
+
+.tip-card__panel {
+  padding: 0 var(--space-5) var(--space-5) calc(var(--space-5) + 2.5rem + var(--space-4));
+}
+
+.tip-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+
+  li {
+    position: relative;
+    padding-left: var(--space-4);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-size: 0.9375rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+  }
+}
+
+.tip-card__updated {
+  margin-top: var(--space-3);
+  font-size: 0.75rem;
+  color: var(--color-slate-400);
+  font-style: italic;
+}

@@ -1,0 +1,22 @@
+// Shared responsive breakpoints. Import in any component stylesheet with:
+//   @use 'breakpoints' as bp;
+//   .thing { @include bp.up('md') { ... } }
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1536px
+);
+
+@mixin up($name) {
+  @media (min-width: map-get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+@mixin down($name) {
+  @media (max-width: (map-get($breakpoints, $name) - 1px)) {
+    @content;
+  }
+}

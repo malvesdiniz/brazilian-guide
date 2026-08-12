@@ -1,0 +1,27 @@
+<div class="destination-filters">
+  <div class="destination-filters__group">
+    <span class="destination-filters__label" id="region-filter-label">{{ regionLabel() }}</span>
+    <app-region-selector
+      [regions]="regions()"
+      [selected]="selectedRegion()"
+      [label]="regionLabel()"
+      [allLabel]="regionAllLabel()"
+      (regionChange)="regionChange.emit($event)"
+    />
+  </div>
+
+  <div class="destination-filters__group">
+    <span class="destination-filters__label" id="category-filter-label">Category</span>
+    <app-category-filter
+      [categories]="categories()"
+      [selected]="selectedCategory()"
+      (categoryChange)="categoryChange.emit($event)"
+    />
+  </div>
+
+  @if (hasActiveFilters()) {
+    <button type="button" class="destination-filters__clear" (click)="clear.emit()">
+      Clear filters
+    </button>
+  }
+</div>

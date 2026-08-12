@@ -1,0 +1,103 @@
+<app-hero-section [content]="hero">
+  <a routerLink="/brazil" class="home-cta home-cta--primary">Explore Brazil</a>
+  <a routerLink="/ceara" class="home-cta home-cta--secondary">Discover Ceará</a>
+  <a routerLink="/fortaleza" class="home-cta home-cta--secondary">Visit Fortaleza</a>
+</app-hero-section>
+
+<section class="container home-section">
+  <p class="home-intro">
+    Hi! If you received this link, it means you were invited to the wedding of the two most
+    beautiful people in the world: Mariana and Sam 😌
+  </p>
+
+  <p class="home-intro">
+    The wedding is happening in Fortaleza, Brazil, and we know that for many of you this is a pretty
+    long trip. So we completely understand that you may not want to fly all the way to Brazil just
+    to spend a few days in Fortaleza — even though Fortaleza is amazing and we love it very much.
+  </p>
+
+  <p class="home-intro">
+    The good news is that this gives you the perfect excuse to turn the wedding trip into a proper
+    holiday. Some of you may want beaches and relaxation, others may prefer cities, nature, culture
+    or adventure. Some of you are traveling with children, some are not. Everyone has a different
+    travel style, so there is no single itinerary that makes sense for everybody.
+  </p>
+
+  <p class="home-intro">
+    That is exactly why we created this guide. Instead of trying to plan everyone’s trip
+    individually, we wanted to put together a place where you can explore different options and
+    figure out what makes sense for you.
+  </p>
+
+  <p class="home-intro">
+    You can use it to discover places around Brazil, explore the coast of Ceará, or simply find
+    ideas for what to do in and around Fortaleza. This can also help you decide how to organize your
+    flights — whether you want to visit another part of Brazil before the wedding, continue
+    traveling afterwards, or simply fly in and out of Fortaleza and organize domestic flights
+    separately.
+  </p>
+
+  <p class="home-intro">
+    For now, the main goal is to help you answer the most important question first:
+    <strong>where do you actually want to go?</strong> Once you know that, planning flights and the
+    rest of the trip becomes much easier.
+  </p>
+
+  <p class="home-intro">
+    We will keep adding information to this guide over time, especially when we notice that the same
+    questions keep coming up. So think of this as a living guide rather than a finished travel
+    website. If there is something you think would be useful to add, suggestions are very welcome!
+  </p>
+
+  <p class="home-intro">
+    And of course, you can still message us if you have questions. We really want to make this trip
+    as easy and enjoyable as possible for everyone — especially because, closer to the wedding, we
+    may be slightly less efficient human beings 😅
+  </p>
+
+  <p class="home-intro">
+    We hope this helps you plan an amazing trip, and we cannot wait to have you in Brazil with us.
+  </p>
+
+  <p class="home-intro">
+    <strong>P.S.:</strong> This is not the wedding website. That one will come later, together with
+    the official invitation.
+  </p>
+
+  <section class="container home-section">
+    <app-section-heading
+      eyebrow="Before you go"
+      title="General travel tips"
+      description="Practical starting points that apply across Brazil, Ceará, and Fortaleza. This is placeholder guidance — confirm current details before your trip."
+    />
+
+    <app-tips-grid [tips]="generalTips" />
+  </section>
+  <app-section-heading
+    eyebrow="Where to start"
+    title="Where to explore"
+    description="Three places, three levels of detail."
+  />
+
+  <div class="home-guides">
+    @for (card of guideCards; track card.guide) {
+      <app-guide-section-card [card]="card" />
+    }
+  </div>
+</section>
+
+<section class="container home-section">
+  <app-section-heading eyebrow="Getting around this guide" title="How to use this guide" />
+
+  <div class="home-how-to">
+    @for (step of howToUseSteps; track step.title) {
+      <div class="home-how-to__step">
+        <div class="home-how-to__icon">
+          <app-icon [name]="step.icon" [size]="22" />
+        </div>
+        <h3 class="home-how-to__title">{{ step.title }}</h3>
+        <p class="home-how-to__description">{{ step.description }}</p>
+      </div>
+    }
+  </div>
+</section>

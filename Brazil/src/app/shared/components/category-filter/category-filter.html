@@ -1,0 +1,22 @@
+<div class="chip-group" role="group" [attr.aria-label]="label()">
+  <button
+    type="button"
+    class="chip-group__chip"
+    [class.chip-group__chip--active]="selected() === null"
+    [attr.aria-pressed]="selected() === null"
+    (click)="categoryChange.emit(null)"
+  >
+    {{ allLabel() }}
+  </button>
+  @for (category of categories(); track category) {
+    <button
+      type="button"
+      class="chip-group__chip"
+      [class.chip-group__chip--active]="selected() === category"
+      [attr.aria-pressed]="selected() === category"
+      (click)="categoryChange.emit(category)"
+    >
+      {{ category }}
+    </button>
+  }
+</div>
