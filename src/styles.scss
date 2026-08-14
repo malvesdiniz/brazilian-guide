@@ -103,6 +103,27 @@
   }
 }
 
+// --- Page transitions --------------------------------------------------
+::view-transition-old(root) {
+  animation: fade-out var(--transition-slow) both;
+}
+
+::view-transition-new(root) {
+  animation: fade-in var(--transition-slow) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
 // --- Reset -----------------------------------------------------------------
 *,
 *::before,
