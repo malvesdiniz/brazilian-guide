@@ -24,11 +24,23 @@ import {
 // it would stay SSR-safe if this project ever adds server-side rendering.
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
+import { GestureHandling } from 'leaflet-gesture-handling';
 import { MAP_DEFAULTS, TILE_LAYER_ATTRIBUTION, TILE_LAYER_URL } from '../../../core/config/map.config';
 import { Coordinates, TravelDestination } from '../../models';
 import { EmptyState } from '../empty-state/empty-state';
 import { LoadingState } from '../loading-state/loading-state';
 import { MapPopup } from '../map-popup/map-popup';
+
+declare module 'leaflet' {
+  interface MapOptions {
+    gestureHandling?: boolean;
+  }
+}
+
+// L.Map.addInitHook registers on the shared prototype, so this must only
+// run once even though InteractiveMap can be constructed many times (one
+// per page that embeds a map).
+let gestureHandlingRegistered = false;
 
 /**
  * Leaflet + OpenStreetMap wrapper. The map is only created inside
@@ -110,13 +122,19 @@ export class InteractiveMap implements OnDestroy {
 
   private initializeMap(): void {
     try {
+      if (!gestureHandlingRegistered) {
+        L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
+        gestureHandlingRegistered = true;
+      }
+
       const center = this.initialCenter();
       const map = L.map(this.mapContainer().nativeElement, {
         center: [center.lat, center.lng],
         zoom: this.initialZoom(),
         minZoom: MAP_DEFAULTS.minZoom,
         maxZoom: MAP_DEFAULTS.maxZoom,
-        scrollWheelZoom: MAP_DEFAULTS.scrollWheelZoom
+        scrollWheelZoom: MAP_DEFAULTS.scrollWheelZoom,
+        gestureHandling: MAP_DEFAULTS.gestureHandling
       });
 
       L.tileLayer(TILE_LAYER_URL, {

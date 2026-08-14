@@ -28,6 +28,9 @@ export const MAP_DEFAULTS = {
   minZoom: 3,
   maxZoom: 18,
   scrollWheelZoom: true,
+  // Requires ctrl/cmd+scroll (or two-finger touch) to zoom, so the map
+  // doesn't hijack the page scroll when the cursor happens to pass over it.
+  gestureHandling: true,
   clusterRadius: 50,
   boundsPadding: [40, 40] as [number, number]
 };
