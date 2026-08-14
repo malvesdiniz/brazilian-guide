@@ -8,36 +8,6 @@
     box-shadow: var(--shadow-sm);
   }
 }
-.tip-card__details {
-  a {
-    color: var(--color-accent);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1.5px;
-
-    transition:
-      color var(--transition-fast),
-      text-decoration-color var(--transition-fast);
-
-    &:hover {
-      color: var(--color-secondary);
-      text-decoration-thickness: 2px;
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-
-    &::after {
-      content: ' ↗';
-      font-size: 0.85em;
-    }
-  }
-}
-
 .tip-card__heading {
   margin: 0;
 }
