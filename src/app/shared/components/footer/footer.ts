@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DISCLAIMER_TEXT } from '../../../data/page-content.data';
-import { Icon } from '../icon/icon';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink, Icon],
+  imports: [RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
