@@ -4,7 +4,6 @@
   background: var(--color-surface);
   overflow: hidden;
   transition: box-shadow var(--transition-fast);
-  height: 100%;
   &:has(.tip-card__trigger[aria-expanded='true']) {
     box-shadow: var(--shadow-sm);
   }
@@ -95,7 +94,7 @@
 }
 
 .tip-card__panel {
-  padding: 0 var(--space-5) var(--space-5) calc(var(--space-5) + 2.5rem + var(--space-4));
+  padding: 0 var(--space-5) var(--space-5);
 }
 
 .tip-card__details {
@@ -109,6 +108,7 @@
     color: var(--color-text-muted);
     line-height: 1.6;
     font-size: 0.9375rem;
+    text-align: justify;
 
     &::before {
       content: '';

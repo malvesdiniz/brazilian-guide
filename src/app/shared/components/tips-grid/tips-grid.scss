@@ -3,6 +3,7 @@
 .tips-grid {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: start;
   gap: var(--space-3);
 
   @include bp.up(md) {
