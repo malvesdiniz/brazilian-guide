@@ -12,7 +12,7 @@ import {
   input,
   output,
   signal,
-  viewChild
+  viewChild,
 } from '@angular/core';
 // Static imports so 'leaflet.markercluster' augments the exact same Leaflet
 // module instance (a dynamic import() of each can resolve to two separate
@@ -25,7 +25,11 @@ import {
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import { GestureHandling } from 'leaflet-gesture-handling';
-import { MAP_DEFAULTS, TILE_LAYER_ATTRIBUTION, TILE_LAYER_URL } from '../../../core/config/map.config';
+import {
+  MAP_DEFAULTS,
+  TILE_LAYER_ATTRIBUTION,
+  TILE_LAYER_URL,
+} from '../../../core/config/map.config';
 import { Coordinates, TravelDestination } from '../../models';
 import { EmptyState } from '../empty-state/empty-state';
 import { LoadingState } from '../loading-state/loading-state';
@@ -57,7 +61,7 @@ let gestureHandlingRegistered = false;
   imports: [LoadingState, EmptyState, MapPopup],
   templateUrl: './interactive-map.html',
   styleUrl: './interactive-map.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InteractiveMap implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
@@ -83,9 +87,13 @@ export class InteractiveMap implements OnDestroy {
   protected readonly loadFailed = signal(false);
 
   protected readonly locatableDestinations = computed(() =>
-    this.destinations().filter((destination): destination is TravelDestination & {
-      coordinates: Coordinates;
-    } => !!destination.coordinates)
+    this.destinations().filter(
+      (
+        destination
+      ): destination is TravelDestination & {
+        coordinates: Coordinates;
+      } => !!destination.coordinates
+    )
   );
 
   protected readonly selectedDestination = computed(() =>
@@ -117,7 +125,9 @@ export class InteractiveMap implements OnDestroy {
   }
 
   private prefersReducedMotion(): boolean {
-    return this.document.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    return (
+      this.document.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
+    );
   }
 
   private initializeMap(): void {
@@ -134,12 +144,12 @@ export class InteractiveMap implements OnDestroy {
         minZoom: MAP_DEFAULTS.minZoom,
         maxZoom: MAP_DEFAULTS.maxZoom,
         scrollWheelZoom: MAP_DEFAULTS.scrollWheelZoom,
-        gestureHandling: MAP_DEFAULTS.gestureHandling
+        gestureHandling: MAP_DEFAULTS.gestureHandling,
       });
 
       L.tileLayer(TILE_LAYER_URL, {
         attribution: TILE_LAYER_ATTRIBUTION,
-        maxZoom: MAP_DEFAULTS.maxZoom
+        maxZoom: MAP_DEFAULTS.maxZoom,
       }).addTo(map);
 
       this.leafletMap = map;
@@ -165,10 +175,12 @@ export class InteractiveMap implements OnDestroy {
   private buildIcon(selected: boolean): L.DivIcon {
     return L.divIcon({
       className: '',
-      html: `<span class="map-marker${selected ? ' map-marker--selected' : ''}" aria-hidden="true"></span>`,
+      html: `<span class="map-marker${
+        selected ? ' map-marker--selected' : ''
+      }" aria-hidden="true"></span>`,
       iconSize: [30, 30],
       iconAnchor: [15, 28],
-      popupAnchor: [0, -26]
+      popupAnchor: [0, -26],
     });
   }
 
@@ -179,7 +191,10 @@ export class InteractiveMap implements OnDestroy {
     this.clusterGroup?.remove();
     this.markersById.clear();
 
-    const clusterGroup = L.markerClusterGroup({
+    const globalLeaflet =
+      (this.document.defaultView as (Window & { L?: typeof L }) | undefined)?.L ?? L;
+
+    const clusterGroup = globalLeaflet.markerClusterGroup({
       maxClusterRadius: MAP_DEFAULTS.clusterRadius,
       showCoverageOnHover: false,
       spiderfyOnMaxZoom: true,
@@ -187,8 +202,8 @@ export class InteractiveMap implements OnDestroy {
         L.divIcon({
           className: '',
           html: `<span class="map-cluster">${cluster.getChildCount()}</span>`,
-          iconSize: [38, 38]
-        })
+          iconSize: [38, 38],
+        }),
     });
 
     const selectedId = this.selectedDestinationId();
@@ -198,7 +213,7 @@ export class InteractiveMap implements OnDestroy {
         icon: this.buildIcon(destination.id === selectedId),
         alt: destination.name,
         keyboard: true,
-        title: destination.name
+        title: destination.name,
       });
       marker.on('click', () => this.destinationSelected.emit(destination.id));
       this.markersById.set(destination.id, marker);
@@ -210,12 +225,15 @@ export class InteractiveMap implements OnDestroy {
 
     if (destinations.length > 0) {
       const bounds = L.latLngBounds(
-        destinations.map((destination) => [destination.coordinates.lat, destination.coordinates.lng])
+        destinations.map((destination) => [
+          destination.coordinates.lat,
+          destination.coordinates.lng,
+        ])
       );
       map.fitBounds(bounds, {
         padding: MAP_DEFAULTS.boundsPadding,
         maxZoom: this.initialZoom() + 3,
-        animate: !this.prefersReducedMotion()
+        animate: !this.prefersReducedMotion(),
       });
     } else {
       const center = this.initialCenter();
