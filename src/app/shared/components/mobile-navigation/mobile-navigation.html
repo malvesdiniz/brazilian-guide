@@ -11,6 +11,7 @@
             [routerLink]="link.path"
             routerLinkActive="mobile-nav__link--active"
             [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+            [ariaCurrentWhenActive]="'page'"
             class="mobile-nav__link"
             (click)="onLinkClick()"
           >

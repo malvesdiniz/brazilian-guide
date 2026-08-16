@@ -3,7 +3,6 @@ import { RouterLink } from '@angular/router';
 import { TravelDestination } from '../../models';
 import { categoryIcon } from '../../utilities/category-icon';
 import { AppImage } from '../app-image/app-image';
-import { ExternalGuideButton } from '../external-guide-button/external-guide-button';
 import { Icon } from '../icon/icon';
 
 /**
@@ -15,7 +14,7 @@ import { Icon } from '../icon/icon';
 @Component({
   selector: 'app-map-popup',
   standalone: true,
-  imports: [RouterLink, AppImage, Icon, ExternalGuideButton],
+  imports: [RouterLink, AppImage, Icon],
   templateUrl: './map-popup.html',
   styleUrl: './map-popup.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

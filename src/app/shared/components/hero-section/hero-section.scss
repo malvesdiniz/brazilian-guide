@@ -60,7 +60,7 @@
   align-items: flex-start;
 
   gap: var(--space-4);
-  padding: 180px 0;
+  padding-block: 180px;
   text-align: left;
 }
 
@@ -90,11 +90,19 @@
 
   max-width: 68rem;
 
-  font-size: 5em;
+  font-size: 2.5em;
 
   line-height: 0.95;
 
   color: var(--color-white);
+
+  @include bp.up(md) {
+    font-size: 3.75em;
+  }
+
+  @include bp.up(lg) {
+    font-size: 5em;
+  }
 }
 
 .hero__description {
@@ -110,5 +118,8 @@
 }
 
 .hero__actions {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
 }

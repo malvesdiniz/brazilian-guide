@@ -103,23 +103,58 @@
   }
 }
 
+// --- Page transitions --------------------------------------------------
+::view-transition-old(root) {
+  animation: fade-out var(--transition-slow) both;
+}
+
+::view-transition-new(root) {
+  animation: fade-in var(--transition-slow) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
 // --- Reset -----------------------------------------------------------------
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+// `detail` text in tip cards is bound via [innerHTML] (see TipCard), which
+// inserts links after Angular's template compiler runs. Emulated view
+// encapsulation only scopes elements present at compile time, so links here
+// can't be styled from tip-card.scss — they must be styled globally.
 .tip-card__details a {
-  color: #c97a40 !important;
-  font-weight: 700 !important;
-  text-decoration: underline !important;
-  text-decoration-thickness: 2px !important;
-  text-underline-offset: 4px !important;
-  cursor: pointer !important;
-}
+  color: var(--color-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
 
-.tip-card__details a:hover {
-  color: #9f5422 !important;
+  &:hover {
+    color: var(--color-secondary);
+    text-decoration-thickness: 2.5px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 html {
   -webkit-text-size-adjust: 100%;
@@ -189,6 +224,10 @@ a {
 
 img {
   max-width: 100%;
+  display: block;
+}
+
+.app-icon {
   display: block;
 }
 

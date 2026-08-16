@@ -4,41 +4,10 @@
   background: var(--color-surface);
   overflow: hidden;
   transition: box-shadow var(--transition-fast);
-  height: 100%;
   &:has(.tip-card__trigger[aria-expanded='true']) {
     box-shadow: var(--shadow-sm);
   }
 }
-.tip-card__details {
-  a {
-    color: var(--color-accent);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1.5px;
-
-    transition:
-      color var(--transition-fast),
-      text-decoration-color var(--transition-fast);
-
-    &:hover {
-      color: var(--color-secondary);
-      text-decoration-thickness: 2px;
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-
-    &::after {
-      content: ' ↗';
-      font-size: 0.85em;
-    }
-  }
-}
-
 .tip-card__heading {
   margin: 0;
 }
@@ -95,7 +64,7 @@
 }
 
 .tip-card__panel {
-  padding: 0 var(--space-5) var(--space-5) calc(var(--space-5) + 2.5rem + var(--space-4));
+  padding: 0 var(--space-5) var(--space-5);
 }
 
 .tip-card__details {
@@ -109,6 +78,7 @@
     color: var(--color-text-muted);
     line-height: 1.6;
     font-size: 0.9375rem;
+    text-align: justify;
 
     &::before {
       content: '';

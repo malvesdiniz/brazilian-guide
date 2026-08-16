@@ -13,6 +13,7 @@
               [routerLink]="link.path"
               routerLinkActive="header__link--active"
               [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              [ariaCurrentWhenActive]="'page'"
               class="header__link"
             >
               {{ link.label }}
