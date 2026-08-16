@@ -61,7 +61,6 @@
 
   &--active {
     color: var(--color-primary-strong);
-    background: var(--color-ocean-100);
     font-weight: 600;
 
     &::after {
@@ -73,10 +72,6 @@
       height: 2px;
       border-radius: var(--radius-full);
       background: var(--color-accent);
-    }
-
-    &:hover {
-      background: var(--color-ocean-100);
     }
   }
 }
