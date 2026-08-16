@@ -146,7 +146,8 @@ export class InteractiveMap implements OnDestroy {
       this.renderMarkers(map, this.locatableDestinations());
       this.ready.set(true);
       this.mapReady.emit();
-    } catch {
+    } catch (error) {
+      console.error('Failed to initialize interactive map:', error);
       this.clusterGroup?.remove();
       this.leafletMap?.remove();
       this.leafletMap = undefined;
