@@ -1469,5 +1469,195 @@ The only thing I would keep in mind is that Ceará already gives you a lot of ve
 
     featured: false,
   },
+  {
+    id: 'brazil-bonito',
+    slug: 'bonito',
+    name: 'Bonito',
+
+    shortDescription:
+      'Crystal-clear rivers, caves, waterfalls and some of the best organised ecotourism in Brazil.',
+
+    fullDescription: `
+Bonito is one of the best destinations in Brazil if you want nature and adventure without having to disappear into the middle of nowhere.
+
+The region is famous for its incredibly clear freshwater rivers, where one of the main activities is flutuação — basically snorkeling while gently floating downstream and watching fish below you through water that sometimes looks almost unreal.
+
+There are also caves, waterfalls, natural swimming areas, hiking trails and places such as Gruta do Lago Azul, one of the most famous attractions in the region.
+
+One important thing: Bonito is not the Pantanal. They are both in Mato Grosso do Sul and are often combined in the same trip, but they are different experiences. Bonito is more about clear rivers, caves, waterfalls and organised outdoor activities, while the Pantanal is much more focused on wildlife and wetlands.
+
+Tourism in Bonito is very structured. Many attractions have controlled visitor numbers and are usually visited through scheduled tours, often with a guide. So this is not really a place where you wake up at 11:30, look outside and casually decide what to do. A little planning is your friend here.
+
+August is during the drier season, which generally means pleasant conditions for outdoor activities, lower humidity and potentially cooler mornings and evenings.
+
+If you are looking for something completely different from beaches and cities, Bonito is a very strong option — especially for couples or groups who like nature but still want comfortable tourism infrastructure.
+`,
+
+    region: 'Central-West',
+    category: 'Adventure',
+    guide: 'brazil',
+
+    coordinates: {
+      lat: -21.1261,
+      lng: -56.4836,
+    },
+
+    image: '/img/bonito.jpg',
+    imageAlt: 'Crystal-clear river surrounded by forest in Bonito',
+
+    quickFacts: {
+      fromFortaleza: 'Usually requires a flight connection plus some ground transport',
+      airport: 'BYO — Bonito Regional Airport, or CGR — Campo Grande followed by road transfer',
+      weather:
+        'Dry and pleasant in August, with warm days and potentially cool mornings and nights',
+      suggestedStay: '4–5 days',
+      bestFor: ['Snorkeling', 'Nature', 'Waterfalls', 'Caves', 'Adventure', 'Ecotourism'],
+    },
+
+    pros: [
+      'Some of the clearest freshwater rivers you will probably ever see',
+      'Very good mix of adventure and comfortable tourism infrastructure',
+      'Lots of completely different activities: snorkeling, caves, waterfalls and hiking',
+      'Tourism is highly organised, which makes the experience relatively easy once you arrive',
+      'A great choice if you want nature but do not want another beach destination',
+      'Can be combined with the Pantanal for a much bigger nature-focused trip',
+    ],
+
+    cons: [
+      'It is quite far from Fortaleza and usually requires a connection',
+      'Many attractions need to be booked in advance',
+      'Tours can add up, so Bonito is not necessarily a cheap nature destination',
+      'You cannot simply explore many of the main attractions independently',
+      'If your dream is mostly wildlife, the Pantanal may be the stronger choice',
+    ],
+
+    placesToVisit: [
+      'Rio da Prata',
+      'Rio Sucuri',
+      'Gruta do Lago Azul',
+      'Estância Mimosa',
+      'Recanto Ecológico Rio da Prata',
+      'Buraco das Araras',
+      'Aquário Natural',
+    ],
+
+    nearbyIdeas: [
+      {
+        name: 'Pantanal',
+        description:
+          'The obvious combination if you want to turn the trip into a bigger nature experience. Bonito gives you rivers and caves; the Pantanal gives you wetlands and wildlife.',
+      },
+      {
+        name: 'Campo Grande',
+        description: 'A common gateway if flights to Bonito itself are inconvenient or expensive.',
+      },
+    ],
+
+    guideLinks: [
+      {
+        label: 'Bonito Travel Guide',
+        url: 'https://danae-explore.com/en/the-best-tours-to-do-in-bonito-brazil-in-4-days/',
+      },
+    ],
+
+    featured: false,
+  },
+  {
+    id: 'brazil-pantanal',
+    slug: 'pantanal',
+    name: 'Pantanal',
+
+    shortDescription:
+      'One of the best places in South America for wildlife — wetlands, boat trips, safari-style excursions and a very different side of Brazil.',
+
+    fullDescription: `
+The Pantanal is one of the best destinations in Brazil if your main goal is wildlife.
+
+It is a huge tropical wetland spread mainly across Mato Grosso and Mato Grosso do Sul, and the experience here is very different from the Amazon. The landscape is much more open, which often makes animals easier to spot.
+
+Depending on where you stay and which excursions you do, you may see capybaras, caimans, giant otters, macaws, toucans, monkeys, deer and, if you are very lucky, jaguars.
+
+Most people stay in a lodge or fazenda and explore with guides through a mix of boat trips, 4x4 drives, walks and sometimes horseback riding. So this is less about visiting a list of monuments and more about spending a few days outside looking for animals.
+
+The dry season is especially interesting because animals tend to concentrate around the remaining water sources, making wildlife spotting easier. August is therefore a very good time to consider the Pantanal.
+
+And this is where the difference with Bonito matters: Bonito is about crystal-clear rivers, caves, waterfalls and organised adventure activities. The Pantanal is about wildlife, wetlands and guided nature experiences.
+
+They work very well together if you have the time.
+`,
+
+    region: 'Central-West',
+    category: 'Nature',
+    guide: 'brazil',
+
+    coordinates: {
+      lat: -17.686,
+      lng: -56.477,
+    },
+
+    image: '/img/pantanal.jpg',
+    imageAlt: 'Wetland landscape and wildlife in the Pantanal',
+
+    quickFacts: {
+      fromFortaleza: 'Usually requires a flight connection plus several hours of ground transport',
+      airport:
+        'CGR — Campo Grande for the southern Pantanal, or CGB — Cuiabá for the northern Pantanal',
+      weather: 'Dry season in August, with warm days, cooler mornings and good wildlife conditions',
+      suggestedStay: '3–5 days',
+      bestFor: ['Wildlife', 'Photography', 'Nature', 'Boat trips', 'Birdwatching', 'Adventure'],
+    },
+
+    pros: [
+      'Probably one of the best wildlife experiences in Brazil',
+      'Animals can be easier to spot than in denser rainforest environments',
+      'August is a very good period for wildlife viewing',
+      'Excellent for photography and birdwatching',
+      'Can be combined very well with Bonito',
+      'A completely different experience from beaches, cities and the Amazon',
+    ],
+
+    cons: [
+      'It takes real effort to reach from Fortaleza',
+      'The experience depends heavily on the lodge and guide you choose',
+      'Good wildlife lodges can be expensive',
+      'You are dealing with heat, dust, insects and early mornings — nature is apparently unwilling to follow hotel check-in etiquette',
+      'Wildlife sightings are never guaranteed, especially for jaguars',
+    ],
+
+    placesToVisit: [
+      'Southern Pantanal',
+      'Northern Pantanal',
+      'Transpantaneira',
+      'Porto Jofre',
+      'Miranda',
+      'Aquidauana',
+    ],
+
+    nearbyIdeas: [
+      {
+        name: 'Bonito',
+        description:
+          'Probably the best combination. Bonito gives you clear rivers, caves and waterfalls; the Pantanal gives you wildlife and wetlands.',
+      },
+      {
+        name: 'Campo Grande',
+        description:
+          'The most common gateway for the southern Pantanal and also useful if you are combining the trip with Bonito.',
+      },
+      {
+        name: 'Cuiabá',
+        description: 'The main gateway for the northern Pantanal and routes toward Porto Jofre.',
+      },
+    ],
+
+    guideLinks: [
+      {
+        label: 'Pantanal Travel Guide',
+        url: 'https://www.mondayfeelings.com/pantanal-in-brazil/',
+      },
+    ],
+
+    featured: false,
+  },
   // --- Add new Brazil destinations above this line ---
 ];

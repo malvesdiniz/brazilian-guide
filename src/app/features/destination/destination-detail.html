@@ -81,6 +81,15 @@
             </strong>
           </article>
         }
+        @if (destination.quickFacts.price) {
+          <article class="detail__fact">
+            <span class="detail__fact-label"> Price </span>
+
+            <strong class="detail__fact-value">
+              {{ destination.quickFacts.price }}
+            </strong>
+          </article>
+        }
       </section>
     }
 

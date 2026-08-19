@@ -20,6 +20,7 @@ export interface DestinationQuickFacts {
   weather?: string;
   suggestedStay?: string;
   bestFor?: string[];
+  price?: '€' | '€€' | '€€€';
 }
 export interface GalleryImage {
   src: string;
