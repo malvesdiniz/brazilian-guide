@@ -9,7 +9,8 @@
   transition:
     box-shadow var(--transition-base),
     border-color var(--transition-base),
-    transform var(--transition-base);
+    transform var(--transition-base),
+    opacity var(--transition-base);
   height: 100%;
 
   &:hover {
@@ -20,6 +21,14 @@
   &--selected {
     border-color: var(--color-accent);
     box-shadow: 0 0 0 3px var(--color-coral-100), var(--shadow-md);
+  }
+
+  &--dimmed {
+    opacity: 0.45;
+
+    &:hover {
+      opacity: 0.75;
+    }
   }
 }
 

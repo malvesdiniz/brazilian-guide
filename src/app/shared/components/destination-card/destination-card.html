@@ -2,6 +2,7 @@
   class="destination-card"
   [id]="isScrollAnchor() ? 'destination-card-' + destination().id : null"
   [class.destination-card--selected]="selected()"
+  [class.destination-card--dimmed]="dimmed()"
 >
   <button
     type="button"
