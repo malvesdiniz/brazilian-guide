@@ -4,6 +4,7 @@
       <app-destination-card
         [destination]="destination"
         [selected]="destination.id === selectedId()"
+        [dimmed]="!!selectedId() && destination.id !== selectedId()"
         (select)="select.emit($event)"
       />
     }
