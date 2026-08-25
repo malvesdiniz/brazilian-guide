@@ -21,6 +21,8 @@ import { Icon } from '../icon/icon';
 export class DestinationCard {
   readonly destination = input.required<TravelDestination>();
   readonly selected = input(false);
+  /** True when another destination is selected, so this card should recede visually. */
+  readonly dimmed = input(false);
   /**
    * Set to false for secondary/duplicate renderings of the same destination
    * (e.g. a "featured" strip) so only one element on the page carries the

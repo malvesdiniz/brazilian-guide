@@ -26,9 +26,7 @@
   font-weight: 600;
   text-decoration: none;
 
-  transition:
-    color var(--transition-fast),
-    transform var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
 
   &:hover {
     color: var(--color-accent);
@@ -84,7 +82,7 @@
 
   margin-inline: auto;
 
-  padding-block: var(--space-7) var(--space-9);
+  padding-block: var(--space-6) var(--space-8);
 }
 
 .detail__badges {
@@ -153,7 +151,7 @@
   max-width: 78rem;
 
   margin-inline: auto;
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-6);
 
   overflow: hidden;
 
@@ -412,8 +410,6 @@
 /* Personal take */
 
 .detail__personal-take {
-  margin-block: var(--space-7);
-
   padding: 28px;
 
   border: 1px solid rgba(193, 155, 92, 0.25);
@@ -456,9 +452,7 @@
 
   background: var(--color-surface);
 
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 
   h3 {
     margin-bottom: var(--space-2);
@@ -516,9 +510,7 @@
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
 
-  transition:
-    color var(--transition-fast),
-    transform var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
 
   &:hover {
     color: var(--color-secondary);
@@ -572,7 +564,7 @@ app-external-guide-button {
   }
 
   .detail__header {
-    padding-block: var(--space-5) var(--space-7);
+    padding-block: var(--space-5) var(--space-6);
   }
 
   .detail__title {
@@ -584,7 +576,7 @@ app-external-guide-button {
   }
 
   .detail__section {
-    padding-block: var(--space-7);
+    padding-block: var(--space-6);
   }
 
   .detail__nearby-card,
