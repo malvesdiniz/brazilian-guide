@@ -97,3 +97,15 @@
   font-size: 25px;
   font-weight: 400;
 }
+
+.home-cta__badge {
+  margin-left: var(--space-2);
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
